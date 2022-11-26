@@ -3,7 +3,7 @@ Draw a tree of your project in markdown format
 
 ## Documentation
 
-```
+```bash
 usage: tree.py [-h] [-D DIRECTORY] [-f FILE] [-d MAX_DEPTH] [-e EXCLUDE] [-o ORDER] [-s] [-H] [-r] [-E] [-S] [-F] [-N NO_DEVELOP]
 
 Markdown tree
