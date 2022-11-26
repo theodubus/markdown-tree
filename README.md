@@ -25,7 +25,7 @@ options:
   -E, --emotes          Use emotes
   -S, --summary         Display a summary of the tree
   -F, --display-from-directory
-                        Display the tree from the directory (the directory you specified will be treated as "."
+                        Display the tree from the directory (the directory you specified will be treated as ".")
   -N NO_DEVELOP, --no-develop NO_DEVELOP
                         Do not display the files in the directory matching the pattern, display "..." instead
 

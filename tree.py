@@ -170,7 +170,7 @@ def main():
     parser.add_argument('-r', '--reverse', action='store_true', help='Reverse the order of the files')
     parser.add_argument('-E', '--emotes', action='store_true', help='Use emotes')
     parser.add_argument('-S', '--summary', action='store_true', help='Display a summary of the tree')
-    parser.add_argument('-F', '--display-from-directory', action='store_true', help='Display the tree from the directory (the directory you specified will be treated as "."')
+    parser.add_argument('-F', '--display-from-directory', action='store_true', help='Display the tree from the directory (the directory you specified will be treated as ".")')
     parser.add_argument('-N', '--no-develop', type=str, default=None, help='Do not display the files in the directory matching the pattern, display "..." instead')
     args = parser.parse_args()
 
