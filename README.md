@@ -18,7 +18,7 @@ options:
   -e EXCLUDE, --exclude EXCLUDE
                         Exclude files matching the pattern
   -o ORDER, --order ORDER
-                        Order of the files
+                        Criteria for sorting, can be "default", "time" or "size", default is "default"
   -s, --separate        Separate files from directories
   -H, --show-hidden     Show hidden files
   -r, --reverse         Reverse the order of the files
@@ -28,7 +28,6 @@ options:
                         Display the tree from the directory (the directory you specified will be treated as ".")
   -N NO_DEVELOP, --no-develop NO_DEVELOP
                         Do not display the files in the directory matching the pattern, display "..." instead
-
 ```
 
 You can find [here](https://github.com/Th3o-D/UTC-IA01) an example of output of this program.

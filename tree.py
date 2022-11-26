@@ -164,7 +164,7 @@ def main():
     parser.add_argument('-f', '--file', type=str, help='File to write the tree, default is stdout')
     parser.add_argument('-d', '--max-depth', type=int, default=5, help='Maximum depth of the tree, default is 5')
     parser.add_argument('-e', '--exclude', type=str, default=None, help='Exclude files matching the pattern')
-    parser.add_argument('-o', '--order', type=str, default="default", help='Order of the files')
+    parser.add_argument('-o', '--order', type=str, default="default", help='Criteria for sorting, can be "default", "time" or "size", default is "default"')
     parser.add_argument('-s', '--separate', action='store_true', help='Separate files from directories')
     parser.add_argument('-H', '--show-hidden', action='store_true', help='Show hidden files')
     parser.add_argument('-r', '--reverse', action='store_true', help='Reverse the order of the files')
