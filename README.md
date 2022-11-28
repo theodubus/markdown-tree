@@ -4,7 +4,7 @@ Draw a tree of your project in markdown format
 ## Documentation
 
 ```
-usage: tree.py [-h] [-D DIRECTORY] [-f FILE] [-d MAX_DEPTH] [-e EXCLUDE] [-o ORDER] [-s] [-H] [-r] [-E] [-S] [-F] [-N NO_DEVELOP]
+usage: tree.py [-h] [-D DIRECTORY] [-f FILE] [-d MAX_DEPTH] [-e EXCLUDE] [-o ORDER] [-s] [-H] [-r] [-E] [-F] [-N NO_DEVELOP]
 
 Markdown tree
 
@@ -23,11 +23,11 @@ options:
   -H, --show-hidden     Show hidden files
   -r, --reverse         Reverse the order of the files
   -E, --emotes          Use emotes
-  -S, --summary         Display a summary of the tree
   -F, --display-from-directory
                         Display the tree from the directory (the directory you specified will be treated as ".")
   -N NO_DEVELOP, --no-develop NO_DEVELOP
                         Do not display the files in the directory matching the pattern, display "..." instead
+
 ```
 
 You can find [here](https://github.com/Th3o-D/UTC-IA01) an example of output of this program.

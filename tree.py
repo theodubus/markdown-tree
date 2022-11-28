@@ -24,14 +24,6 @@ class Tree:
 
         return total_size
 
-    @staticmethod
-    def remove_char(file, index):
-        with open(file, 'r') as f:
-            data = f.read()
-        with open(file, 'w') as f:
-            f.write(data[:index] + data[index + 1:])
-        # print("Char removed : ", data[index])
-
     def register(self, absolute):
         if os.path.isdir(absolute):
             self.dirCount += 1
@@ -45,6 +37,8 @@ class Tree:
              show_hidden=False, reverse=False, emotes=False, no_develop=None):
 
         if depth > max_depth:
+            if os.listdir(directory):
+                print(prefix + "└── ...\\")
             return
 
         # Indicate if the files must be separated from the directories
@@ -72,7 +66,7 @@ class Tree:
             if index == len(filepaths) - 1:
 
                 if os.path.isdir(absolute):
-                    print(f"\n{prefix}└── {'📁 ' * emotes}[{filepaths[index]}]({absolute})", "\\", end="")
+                    print(f"{prefix}└── {'📁 ' * emotes}[{filepaths[index]}]({absolute})", "\\")
                     if no_develop is not None and re.match("(\./)?" + no_develop, absolute):
                         print(prefix + "&nbsp;" * 12 + "└── ..." + "\\")
                     else:
@@ -80,11 +74,11 @@ class Tree:
                                   exclude=exclude, separate=separate, show_hidden=show_hidden, reverse=reverse,
                                   emotes=emotes, no_develop=no_develop)
                 else:
-                    print(f"\n{prefix}└── {'📄 ' * emotes}[{filepaths[index]}]({absolute})", "\\", end="")
+                    print(f"{prefix}└── {'📄 ' * emotes}[{filepaths[index]}]({absolute})", "\\")
 
             else:
                 if os.path.isdir(absolute):
-                    print(f"\n{prefix}├── {'📁 ' * emotes}[{filepaths[index]}]({absolute})", "\\", end="")
+                    print(f"{prefix}├── {'📁 ' * emotes}[{filepaths[index]}]({absolute})", "\\")
                     if no_develop is not None and re.match("(\./)?" + no_develop, absolute):
                         print(prefix + "│" + "&nbsp;" * 8 + "└── ..." + "\\")
                     else:
@@ -92,10 +86,10 @@ class Tree:
                                   exclude=exclude, separate=separate, show_hidden=show_hidden, reverse=reverse,
                                   emotes=emotes, no_develop=no_develop)
                 else:
-                    print(f"\n{prefix}├── {'📄 ' * emotes}[{filepaths[index]}]({absolute})", "\\", end="")
+                    print(f"{prefix}├── {'📄 ' * emotes}[{filepaths[index]}]({absolute})", "\\")
 
     def display(self, directory=".", file=None, max_depth=0, exclude=None, order="default", separate=False,
-                show_hidden=False, reverse=False, emotes=False, summary=False, display_from_directory=False,
+                show_hidden=False, reverse=False, emotes=False, display_from_directory=False,
                 no_develop=None):
 
         # Criteria for sorting
@@ -128,35 +122,26 @@ class Tree:
                 if display_from_directory is True:
                     os.chdir(directory)
                     directory = "."
-                print(directory, "\\", end="")
+                print(directory, "\\")
                 self.walk(directory, key=key, max_depth=max_depth, exclude=exclude, separate=separate,
                           show_hidden=show_hidden, reverse=reverse, emotes=emotes, no_develop=no_develop)
                 os.chdir(current_directory)
-                print()
-                if summary:
-                    print(self.summary())
-            sys.stdout = original
 
-            # Remove the last "\"
-            index = -2 - (len(self.summary()) + 1) * summary
-            self.remove_char(file, index)
+                print(self.summary())
+
+                sys.stdout = original
 
         else:
             current_directory = os.getcwd()
             if display_from_directory is True:
                 os.chdir(directory)
                 directory = "."
-            print(directory, "\\", end="")
+            print(directory, "\\")
             self.walk(directory, key=key, max_depth=max_depth, exclude=exclude, separate=separate,
                       show_hidden=show_hidden, reverse=reverse, emotes=emotes, no_develop=no_develop)
             os.chdir(current_directory)
 
-            # Remove the last "\"
-            print("\b ")
-
-            if summary:
-                print(self.summary())
-
+            print(self.summary())
 
 def main():
     parser = argparse.ArgumentParser(description='Markdown tree')
@@ -169,14 +154,13 @@ def main():
     parser.add_argument('-H', '--show-hidden', action='store_true', help='Show hidden files')
     parser.add_argument('-r', '--reverse', action='store_true', help='Reverse the order of the files')
     parser.add_argument('-E', '--emotes', action='store_true', help='Use emotes')
-    parser.add_argument('-S', '--summary', action='store_true', help='Display a summary of the tree')
     parser.add_argument('-F', '--display-from-directory', action='store_true', help='Display the tree from the directory (the directory you specified will be treated as ".")')
     parser.add_argument('-N', '--no-develop', type=str, default=None, help='Do not display the files in the directory matching the pattern, display "..." instead')
     args = parser.parse_args()
 
     tree = Tree()
     tree.display(args.directory, args.file, args.max_depth, args.exclude, args.order, args.separate, args.show_hidden,
-                 args.reverse, args.emotes, args.summary, args.display_from_directory, args.no_develop)
+                 args.reverse, args.emotes, args.display_from_directory, args.no_develop)
 
 
 if __name__ == "__main__":
