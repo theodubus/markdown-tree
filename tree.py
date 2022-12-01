@@ -156,11 +156,36 @@ def main():
     parser.add_argument('-E', '--emotes', action='store_true', help='Use emotes')
     parser.add_argument('-F', '--display-from-directory', action='store_true', help='Display the tree from the directory (the directory you specified will be treated as ".")')
     parser.add_argument('-N', '--no-develop', type=str, default=None, help='Do not display the files in the directory matching the pattern, display "..." instead')
+    parser.add_argument('-q', '--quick', action='store_true', help='Quick mode, add options "-d (maxint) -s -E -F" to the command')
+
     args = parser.parse_args()
 
     tree = Tree()
-    tree.display(args.directory, args.file, args.max_depth, args.exclude, args.order, args.separate, args.show_hidden,
-                 args.reverse, args.emotes, args.display_from_directory, args.no_develop)
+
+    if args.quick is True:
+        tree.display(directory=args.directory,
+                     file=args.file,
+                     max_depth=sys.maxsize,
+                     exclude=args.exclude,
+                     order=args.order,
+                     separate=True,
+                     show_hidden=args.show_hidden,
+                     reverse=args.reverse,
+                     emotes=True,
+                     display_from_directory=True,
+                     no_develop=args.no_develop)
+    else:
+        tree.display(directory=args.directory,
+                     file=args.file,
+                     max_depth=args.max_depth,
+                     exclude=args.exclude,
+                     order=args.order,
+                     separate=args.separate,
+                     show_hidden=args.show_hidden,
+                     reverse=args.reverse,
+                     emotes= args.emotes,
+                     display_from_directory=args.display_from_directory,
+                     no_develop=args.no_develop)
 
 
 if __name__ == "__main__":

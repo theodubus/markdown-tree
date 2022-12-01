@@ -4,7 +4,7 @@ Draw a tree of your project in markdown format
 ## Documentation
 
 ```
-usage: tree.py [-h] [-D DIRECTORY] [-f FILE] [-d MAX_DEPTH] [-e EXCLUDE] [-o ORDER] [-s] [-H] [-r] [-E] [-F] [-N NO_DEVELOP]
+usage: tree.py [-h] [-D DIRECTORY] [-f FILE] [-d MAX_DEPTH] [-e EXCLUDE] [-o ORDER] [-s] [-H] [-r] [-E] [-F] [-N NO_DEVELOP] [-q]
 
 Markdown tree
 
@@ -27,6 +27,7 @@ options:
                         Display the tree from the directory (the directory you specified will be treated as ".")
   -N NO_DEVELOP, --no-develop NO_DEVELOP
                         Do not display the files in the directory matching the pattern, display "..." instead
+  -q, --quick           Quick mode, add options "-d (maxint) -s -E -F" to the command
 
 ```
 
