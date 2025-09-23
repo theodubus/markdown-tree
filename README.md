@@ -1,5 +1,5 @@
 # markdown-tree
-Draw a tree of your project in markdown format
+Draw a tree of your project in markdown format, including links to the project's different folders and files
 
 ## Documentation
 
